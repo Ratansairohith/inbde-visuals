@@ -14,7 +14,9 @@ This repo hosts the images embedded in Sathvika's daily INBDE study emails. Ever
 2. Run `python3 scripts/render_cards.py cards/dayNN/cards.html dayNN`.
 3. Open every PNG with the Read tool and check it: nothing cut off, no overlapping text, colors correct, facts match the fact sheet. Fix and re-render if needed.
 4. Commit and push to `main` (author "Ratan Sai Rohith Kokku" <ratan2513@gmail.com>).
-5. Embed in the email with `<img src="https://raw.githubusercontent.com/Ratansairohith/inbde-visuals/main/dayNN/<name>.png" width="592" style="max-width:100%;height:auto;border-radius:14px" alt="...">`.
+5. Link the cards in the email as tap-to-open buttons. The Gmail send tool STRIPS ALL <img> tags (verified Oct 16 2026), so never embed images. Use one button per card:
+   `<a href="https://raw.githubusercontent.com/Ratansairohith/inbde-visuals/main/dayNN/<name>.png" style="display:block;background-color:#e3efe8;border:2px solid #6b9080;border-radius:12px;padding:14px 16px;color:#1f3a3a;text-decoration:none;font-weight:bold;margin-bottom:10px">📋 Cheat sheet: ... ➜</a>`
+   (sage for cheat sheet, sand for drawings, dusty blue for flashcards, lavender for mnemonic).
 
 ## Cards to make each day
 - **Cheat sheet** (`cheatsheet`, 1000px wide): the whole topic on one saveable card, with title, a visual or diagram, key numbers, anchors, traps, and a source line.
