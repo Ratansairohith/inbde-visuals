@@ -1,0 +1,149 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  :root{
+    --cream:#f7f5f0; --ink:#1f3a3a; --text:#374151; --muted:#8a8f8c; --deep:#2f5d62;
+    --sage:#6b9080; --sage-l:#e3efe8; --blue:#5b7db1; --blue-l:#e6eef8;
+    --lav:#8b7fb8; --lav-l:#efecf7; --sand:#c9a46a; --sand-l:#f8f1e4; --rose:#c08497; --rose-l:#f7e9ee;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#ffffff;font-family:Inter, "DejaVu Sans", sans-serif;color:var(--text);padding:40px;display:flex;flex-direction:column;gap:40px;align-items:flex-start}
+  .card{background:var(--cream);border-radius:28px;padding:44px 48px;width:1000px}
+  .eyebrow{font-size:15px;letter-spacing:3px;color:var(--sage);font-weight:700;text-transform:uppercase}
+  h1{font-family:"DejaVu Serif", Georgia, serif;font-size:42px;color:var(--ink);margin-top:6px;line-height:1.15}
+  .sub{font-size:18px;color:var(--muted);margin-top:8px}
+  h2{font-size:20px;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+  h2 .dot{width:12px;height:12px;border-radius:50%}
+  .panel{background:#fff;border-radius:20px;padding:22px 24px;margin-top:22px}
+  /* tooth loop */
+  .row{display:grid;grid-template-columns:repeat(16,1fr);gap:6px}
+  .t{height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;color:var(--ink);border:2.5px solid}
+  .M{background:var(--sage-l);border-color:var(--sage)} .P{background:var(--blue-l);border-color:var(--blue)}
+  .C{background:var(--sand-l);border-color:var(--sand)} .I{background:var(--lav-l);border-color:var(--lav)}
+  .fdi{display:grid;grid-template-columns:repeat(16,1fr);gap:6px;font-size:11.5px;color:var(--muted);text-align:center;margin:4px 0}
+  .loopline{display:flex;justify-content:space-between;align-items:center;font-size:15px;color:var(--deep);font-weight:700;margin:6px 2px}
+  .sides{display:flex;justify-content:space-between;font-size:14px;font-weight:800;color:var(--rose);letter-spacing:1px;margin-bottom:8px}
+  .legend{display:flex;gap:22px;margin-top:14px;font-size:15px}
+  .legend span{display:flex;align-items:center;gap:8px}
+  .sw{width:18px;height:18px;border-radius:5px;border:2.5px solid}
+  /* conversion */
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .conv{border-radius:16px;padding:16px;text-align:center}
+  .conv .q{font-size:14px;color:var(--muted);font-weight:600}
+  .conv .rule{font-size:30px;font-weight:800;color:var(--ink);margin:6px 0}
+  .conv .ex{font-size:14px;color:var(--text)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .anchor{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed #e5e7eb;font-size:17px}
+  .anchor b{color:var(--ink)}
+  .trap{display:flex;gap:12px;padding:8px 0;font-size:16px;line-height:1.45}
+  .trap .n{flex:0 0 28px;height:28px;border-radius:50%;background:var(--rose-l);color:var(--rose);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .letters{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin-top:4px}
+  .letters div{height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--ink);font-size:16px;border-width:2.5px;border-style:solid}
+  .foot{font-size:13px;color:var(--muted);margin-top:22px;display:flex;justify-content:space-between}
+  /* flashcards */
+  .fc{width:640px;padding:38px 40px;display:flex;flex-direction:column}
+  .fc .tag{display:inline-block;font-size:13px;font-weight:700;letter-spacing:2px;padding:6px 12px;border-radius:999px;background:var(--sage-l);color:var(--sage);align-self:flex-start}
+  .fc .qq{font-family:"DejaVu Serif", Georgia, serif;font-size:31px;color:var(--ink);line-height:1.3;margin:22px 0 26px}
+  .fc .ans{background:#fff;border-radius:18px;padding:20px 22px;border-left:6px solid var(--sage)}
+  .fc .ans .lbl{font-size:12px;letter-spacing:2px;color:var(--muted);font-weight:700}
+  .fc .ans .a{font-size:26px;font-weight:800;color:var(--ink);margin-top:4px}
+  .fc .ans .why{font-size:16px;color:var(--text);margin-top:6px;line-height:1.45}
+  .fc .num{font-size:13px;color:var(--muted);margin-top:18px;text-align:right}
+</style></head><body>
+
+<!-- ================= CHEAT SHEET ================= -->
+<div class="card" data-name="cheatsheet">
+  <div class="eyebrow">INBDE · Day 1 cheat sheet</div>
+  <h1>US Universal tooth numbering</h1>
+  <div class="sub">One horseshoe loop. Charts are drawn facing the patient.</div>
+
+  <div class="panel">
+    <h2><span class="dot" style="background:var(--sage)"></span>The loop: 1 → 16 across the top, drop, 17 → 32 back across the bottom</h2>
+    <div class="sides"><span>PATIENT'S RIGHT</span><span>PATIENT'S LEFT</span></div>
+    <div class="loopline"><span>START #1 ➜</span><span>UPPER (maxillary)</span><span>➜ #16 ⤵</span></div>
+    <div class="row">
+      <div class="t M">1</div><div class="t M">2</div><div class="t M">3</div><div class="t P">4</div><div class="t P">5</div><div class="t C">6</div><div class="t I">7</div><div class="t I">8</div>
+      <div class="t I">9</div><div class="t I">10</div><div class="t C">11</div><div class="t P">12</div><div class="t P">13</div><div class="t M">14</div><div class="t M">15</div><div class="t M">16</div>
+    </div>
+    <div class="fdi"><span>18</span><span>17</span><span>16</span><span>15</span><span>14</span><span>13</span><span>12</span><span>11</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span></div>
+    <div style="height:8px"></div>
+    <div class="fdi"><span>48</span><span>47</span><span>46</span><span>45</span><span>44</span><span>43</span><span>42</span><span>41</span><span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span></div>
+    <div class="row">
+      <div class="t M">32</div><div class="t M">31</div><div class="t M">30</div><div class="t P">29</div><div class="t P">28</div><div class="t C">27</div><div class="t I">26</div><div class="t I">25</div>
+      <div class="t I">24</div><div class="t I">23</div><div class="t C">22</div><div class="t P">21</div><div class="t P">20</div><div class="t M">19</div><div class="t M">18</div><div class="t M">17</div>
+    </div>
+    <div class="loopline"><span>END #32 ⬅</span><span>LOWER (mandibular)</span><span>⬅ #17</span></div>
+    <div class="legend">
+      <span><i class="sw M"></i>Molars</span><span><i class="sw P"></i>Premolars</span><span><i class="sw C"></i>Canines</span><span><i class="sw I"></i>Incisors</span>
+      <span style="color:var(--muted)">small grey = FDI (India)</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2><span class="dot" style="background:var(--blue)"></span>FDI → Universal in 2 seconds (x = last FDI digit)</h2>
+    <div class="grid4">
+      <div class="conv" style="background:var(--sand-l)"><div class="q">1x · upper right</div><div class="rule">9 − x</div><div class="ex">16 → #3</div></div>
+      <div class="conv" style="background:var(--blue-l)"><div class="q">2x · upper left</div><div class="rule">8 + x</div><div class="ex">23 → #11</div></div>
+      <div class="conv" style="background:var(--sage-l)"><div class="q">3x · lower left</div><div class="rule">25 − x</div><div class="ex">36 → #19</div></div>
+      <div class="conv" style="background:var(--rose-l)"><div class="q">4x · lower right</div><div class="rule">24 + x</div><div class="ex">46 → #30</div></div>
+    </div>
+  </div>
+
+  <div class="two">
+    <div class="panel">
+      <h2><span class="dot" style="background:var(--sand)"></span>Anchors to memorize</h2>
+      <div class="anchor"><span>Wisdom teeth</span><b>1 · 16 · 17 · 32</b></div>
+      <div class="anchor"><span>First molars</span><b>3 · 14 · 19 · 30</b></div>
+      <div class="anchor"><span>Canines</span><b>6 · 11 · 22 · 27</b></div>
+      <div class="anchor" style="border:0"><span>Centrals</span><b>8 · 9 · 24 · 25</b></div>
+    </div>
+    <div class="panel">
+      <h2><span class="dot" style="background:var(--rose)"></span>Traps</h2>
+      <div class="trap"><span class="n">1</span><span><b>#51 to #82</b> in the US = supernumerary teeth, not baby teeth</span></div>
+      <div class="trap"><span class="n">2</span><span><b>#17</b> is lower <b>left</b>, not lower right</span></div>
+      <div class="trap"><span class="n">3</span><span>Missing teeth <b>keep</b> their numbers</span></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2><span class="dot" style="background:var(--lav)"></span>Baby teeth: letters A → T, same loop (no premolars)</h2>
+    <div class="letters">
+      <div class="M">A</div><div class="M">B</div><div class="C">C</div><div class="I">D</div><div class="I">E</div><div class="I">F</div><div class="I">G</div><div class="C">H</div><div class="M">I</div><div class="M">J</div>
+    </div>
+    <div class="letters" style="margin-top:6px">
+      <div class="M">T</div><div class="M">S</div><div class="C">R</div><div class="I">Q</div><div class="I">P</div><div class="I">O</div><div class="I">N</div><div class="C">M</div><div class="M">L</div><div class="M">K</div>
+    </div>
+  </div>
+  <div class="foot"><span>Source: ADA Universal / National System; FDI (ISO 3950)</span><span>Save this to your phone</span></div>
+</div>
+
+<!-- ================= FLASHCARDS ================= -->
+<div class="card fc" data-name="flashcard-1">
+  <span class="tag">FLASHCARD 1 / 4</span>
+  <div class="qq">A referral from India says <b>"tooth 36"</b>. What is it in the US Universal system?</div>
+  <div class="ans"><div class="lbl">ANSWER · cover this, then check</div><div class="a">#19</div><div class="why">Mandibular left first molar. Lower left rule: 25 − 6 = 19.</div></div>
+  <div class="num">INBDE · Day 1</div>
+</div>
+
+<div class="card fc" data-name="flashcard-2" style="--x:0">
+  <span class="tag" style="background:var(--blue-l);color:var(--blue)">FLASHCARD 2 / 4</span>
+  <div class="qq">Which numbers are the four <b>third molars</b>?</div>
+  <div class="ans" style="border-left-color:var(--blue)"><div class="lbl">ANSWER · cover this, then check</div><div class="a">1 · 16 · 17 · 32</div><div class="why">The four corners of the loop.</div></div>
+  <div class="num">INBDE · Day 1</div>
+</div>
+
+<div class="card fc" data-name="flashcard-3">
+  <span class="tag" style="background:var(--sand-l);color:var(--sand)">FLASHCARD 3 / 4</span>
+  <div class="qq">A 4-year-old fractured the <b>maxillary left primary canine</b>. Which letter?</div>
+  <div class="ans" style="border-left-color:var(--sand)"><div class="lbl">ANSWER · cover this, then check</div><div class="a">H</div><div class="why">Upper left from the midline: F central, G lateral, H canine.</div></div>
+  <div class="num">INBDE · Day 1</div>
+</div>
+
+<div class="card fc" data-name="flashcard-4">
+  <span class="tag" style="background:var(--rose-l);color:var(--rose)">FLASHCARD 4 / 4</span>
+  <div class="qq">A US radiology report says <b>"#51 present"</b>. What does it mean?</div>
+  <div class="ans" style="border-left-color:var(--rose)"><div class="lbl">ANSWER · cover this, then check</div><div class="a">Supernumerary tooth</div><div class="why">Next to #1. In the US, 51 to 82 are extra permanent teeth, never baby teeth.</div></div>
+  <div class="num">INBDE · Day 1</div>
+</div>
+
+</body></html>
